@@ -7,7 +7,18 @@ This app allows users to catch men that are falling from the sky
 
 
 ### Wireframes
-<img src='https://github.com/buctik/RainingMen/blob/master/ItsRainingMenMockup.png' title='Image1 Description' width='' alt='Image1 Description' />
+
+####Basic Game Mechanics
+<img src='https://github.com/buctik/RainingMen/blob/master/Basic%20Game%20Mockup.png' title='Image1 Description' width='' alt='Image1 Description' />
+
+#####Profile Page Flows
+<img src='https://github.com/buctik/RainingMen/blob/master/Profile%20Page.png' title='Image1 Description' width='' alt='Image1 Description' />
+
+##### Save Men Feature (stretch 1)
+<img src='https://github.com/buctik/RainingMen/blob/master/Save%20men%20Feature.png' title='Image1 Description' width='' alt='Image1 Description' />
+
+##### 2D Catch flying men in any direction feature (stretch 2)
+<img src='https://github.com/buctik/RainingMen/blob/master/2D%20Raining%20Men.png' title='Image1 Description' width='' alt='Image1 Description' />
 
 
 
