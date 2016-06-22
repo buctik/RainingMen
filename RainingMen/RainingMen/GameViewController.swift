@@ -25,6 +25,8 @@ class GameViewController: UIViewController {
     var count: Int = 0
     var countMain: Int = 0
     
+    var score: Int = 0
+    
     var timer: CGFloat!
     var timerMain: CGFloat!
     
@@ -37,6 +39,7 @@ class GameViewController: UIViewController {
         highscoreButton.alpha = 0
         scoreTitleLabel.alpha = 0
         scoreLabel.alpha = 0
+//        score = 0
         
         startTimer()
         
@@ -149,14 +152,27 @@ class GameViewController: UIViewController {
             print("Gesture ended")
         }
     }
-    /*
+    @IBAction func tappedHighScoresButton(sender: UIButton) {
+    
+    }
+    
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
+        
+        leaderboardViewController.view.layoutIfNeeded()
+        
+        leaderboardViewController.score1 = score
+    
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
