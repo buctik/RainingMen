@@ -132,7 +132,7 @@ class GameViewController: UIViewController {
     }
 
     @IBAction func onMoveGIrl(sender: UIPanGestureRecognizer) {
-        var point = sender.locationInView(view)
+        let point = sender.locationInView(view)
 //        var velocity = sender.velocityInView(view)
 //        var translation = sender.translationInView(view)
         
