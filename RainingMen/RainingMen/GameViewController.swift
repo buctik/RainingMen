@@ -55,13 +55,8 @@ class GameViewController: UIViewController {
         highscoreButton.alpha = 0
         scoreTitleLabel.alpha = 0
         scoreLabel.alpha = 0
-//        score = 0
         
         startTimer()
-        
-//        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
-//
-//        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
 
         
         
@@ -110,7 +105,7 @@ class GameViewController: UIViewController {
     func startTimer() {
         timerLabel.text = "Get Ready"
         count = 4
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
         
         
     }
@@ -122,7 +117,7 @@ class GameViewController: UIViewController {
     func startTimerMain() {
         countMain = 30
         
-        timerMain = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
         
         
         
@@ -174,11 +169,12 @@ class GameViewController: UIViewController {
         
         
         
-//        if (catcherView.center.y <= self.fallingMan.center.y + 42) && (self.fallingMan.center.x - 18 < catcherView.center.x {
-//            
-//            fallingMan.alpha = 0
-//            
-//        }
+        if (catcherView.center.y <= self.fallingMan.center.y + 42) && ((self.fallingMan.center.x + 18 > catcherView.center.x - 24 && self.fallingMan.center.x + 18 < catcherView.center.x + 24) || (self.fallingMan.center.x - 18 < catcherView.center.x + 24 && self.fallingMan.center.x > catcherView.center.x - 24)) {
+            
+            fallingMan.alpha = 0
+            score++
+            
+        }
         
         
 //        if sender.state == UIGestureRecognizerState.Began {
@@ -191,7 +187,6 @@ class GameViewController: UIViewController {
     }
     @IBAction func tappedHighScoresButton(sender: UIButton) {
         performSegueWithIdentifier("highScoresSegue", sender: self)
-        //prepareForSegue(highScoresSegue, sender: self)
         
     }
     
@@ -203,8 +198,6 @@ class GameViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
         
-        //leaderboardViewController.view.layoutIfNeeded()
-        
         leaderboardViewController.score1 = score
         leaderboardViewController.playerName = playerLabel.text
         
@@ -215,7 +208,6 @@ class GameViewController: UIViewController {
     }
     
     func fallingMen() {
-//        print("\(cloudView.center.x)")
         fallingMan = UIImageView(frame: CGRectMake(cloudView.center.x, cloudView.center.y + 36, 36, 36))
         fallingMan.contentMode = UIViewContentMode.ScaleAspectFill
         
@@ -224,15 +216,11 @@ class GameViewController: UIViewController {
         
         fallingMan.alpha = 1
         
-        self.view.addSubview(fallingMan)
+        self.view.insertSubview(fallingMan, belowSubview: catcherView)
         
         UIView.animateWithDuration(3) {
             self.fallingMan.center.y = 568
         }
-        
-//        let cloudCenter = cloudView.center.x
-//        fallingMan.center.x = cloudCenter
-//        fallingMan.center.y = cloudView.center.y + 36
         
         
     }
