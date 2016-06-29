@@ -129,11 +129,23 @@ class GameViewController: UIViewController {
     }
     
     func updateMain() {
+//        if countMain % 60 == 0 {
+//            fallingMen()
+//        }
         if(countMain > 0) {
-            if (catcherView.center.y <= self.fallingMan.layer.presentationLayer()!.frame.origin.y + 42) && ((self.fallingMan.layer.presentationLayer()!.frame.origin.x + 18 > catcherView.center.x - 24 && self.fallingMan.layer.presentationLayer()!.frame.origin.x + 18 < catcherView.center.x + 24) || (self.fallingMan.layer.presentationLayer()!.frame.origin.x - 18 < catcherView.center.x + 24 && self.fallingMan.layer.presentationLayer()!.frame.origin.x > catcherView.center.x - 24)) {
-                
+            let catcherViewLeftEdge = catcherView.frame.origin.x
+            let catcherViewRightEdge = catcherView.frame.origin.x + catcherView.frame.width
+            let catcherViewTopEdge = catcherView.frame.origin.y
+            
+//            print("\(fallingMan.layer.presentationLayer()!.frame.origin.y,fallingMan.alpha, self.catcherView.frame.origin.y)")
+            
+            let fallingManLeftEdge = fallingMan.layer.presentationLayer()!.frame.origin.x
+            let fallingManRightEdge = fallingMan.layer.presentationLayer()!.frame.origin.x + fallingMan.layer.presentationLayer()!.frame.width
+            let fallingManBottomEdge = fallingMan.layer.presentationLayer()!.frame.origin.y + fallingMan.layer.presentationLayer()!.frame.height
+            
+            if (catcherViewTopEdge <= fallingManBottomEdge) && ((fallingManRightEdge > catcherViewLeftEdge && fallingManRightEdge < catcherViewRightEdge) || (fallingManLeftEdge < catcherViewRightEdge && fallingManLeftEdge > catcherViewLeftEdge)) {
                 fallingMan.alpha = 0
-                fallingMan.frame.origin.y = 0
+                fallingMan.center.y = 0
                 score += 1
                 scoreLabel.text = String(score)
                 
@@ -190,7 +202,7 @@ class GameViewController: UIViewController {
     }
     
     func fallingMen() {
-        fallingMan = UIImageView(frame: CGRectMake(cloudView.center.x, cloudView.center.y + 36, 36, 36))
+        fallingMan = UIImageView(frame: CGRectMake(cloudView.layer.presentationLayer()!.frame.origin.x, cloudView.center.y + 36, 36, 36))
         fallingMan.contentMode = UIViewContentMode.ScaleAspectFill
         
         
