@@ -153,7 +153,7 @@ class GameViewController: UIViewController {
         }
     }
     @IBAction func tappedHighScoresButton(sender: UIButton) {
-    
+        performSegueWithIdentifier("highScoresSegue", sender: self)
     }
     
     

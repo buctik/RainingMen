@@ -87,7 +87,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedHighScoresButton:" destination="h5y-4G-zht" eventType="touchUpInside" id="abz-Wa-Dye"/>
-                                    <segue destination="gSN-Zj-bd4" kind="modal" id="blu-5T-e7u"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a3i-92-8TH">
@@ -116,6 +115,7 @@
                         <outlet property="scoreLabel" destination="b3I-MK-CcF" id="ZLN-qB-n3d"/>
                         <outlet property="scoreTitleLabel" destination="a3i-92-8TH" id="0hH-6J-tBm"/>
                         <outlet property="timerLabel" destination="Zu1-Z2-Ndv" id="bK9-ez-ALh"/>
+                        <segue destination="gSN-Zj-bd4" kind="modal" identifier="highScoresSegue" id="KBG-vk-WnI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIJ-mW-XpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
