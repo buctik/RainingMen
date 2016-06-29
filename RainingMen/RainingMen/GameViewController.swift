@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class GameViewController: UIViewController {
 
@@ -27,7 +28,7 @@ class GameViewController: UIViewController {
     var count: Int = 0
     var countMain: Int = 0
     
-    var score: Int = 33
+    var score: Int = 0
     
     var timer: NSTimer!
     var timerMain: NSTimer!
@@ -57,12 +58,6 @@ class GameViewController: UIViewController {
         scoreLabel.alpha = 0
         
         startTimer()
-
-        
-        
-        
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,28 +74,6 @@ class GameViewController: UIViewController {
     
     
     
-    func updateMain() {
-        if(countMain > 0) {
-            countMain = countMain - 1
-            timerLabel.text = String(countMain)
-            if countMain == 0 {
-                countLabel.text = "Game Over"
-                catcherView.alpha = 0
-                cloudView.alpha = 0
-                scoreTitleLabel.alpha = 0
-                scoreLabel.alpha = 0
-                timerLabel.alpha = 0
-                self.playerLabel.alpha = 0
-                UIView.animateWithDuration(1, animations: {
-                    self.countLabel.alpha = 1
-                    self.restartButton.alpha = 1
-                    self.highscoreButton.alpha = 1
-                    
-                })
-                stopTimerMain()
-            }
-        }
-    }
     
     func startTimer() {
         timerLabel.text = "Get Ready"
@@ -115,12 +88,9 @@ class GameViewController: UIViewController {
     }
     
     func startTimerMain() {
-        countMain = 30
+        countMain = 300
         
-        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
-        
-        
-        
+        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
     }
     
     func stopTimerMain(){
@@ -157,6 +127,37 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    func updateMain() {
+        if(countMain > 0) {
+            if (catcherView.center.y <= self.fallingMan.layer.presentationLayer()!.frame.origin.y + 42) && ((self.fallingMan.layer.presentationLayer()!.frame.origin.x + 18 > catcherView.center.x - 24 && self.fallingMan.layer.presentationLayer()!.frame.origin.x + 18 < catcherView.center.x + 24) || (self.fallingMan.layer.presentationLayer()!.frame.origin.x - 18 < catcherView.center.x + 24 && self.fallingMan.layer.presentationLayer()!.frame.origin.x > catcherView.center.x - 24)) {
+                
+                fallingMan.alpha = 0
+                fallingMan.frame.origin.y = 0
+                score += 1
+                scoreLabel.text = String(score)
+                
+            }
+            countMain = countMain - 1
+            timerLabel.text = String(Int(countMain/10))
+            if countMain == 0 {
+                countLabel.text = "Game Over"
+                catcherView.alpha = 0
+                cloudView.alpha = 0
+                scoreTitleLabel.alpha = 0
+                scoreLabel.alpha = 0
+                timerLabel.alpha = 0
+                self.playerLabel.alpha = 0
+                UIView.animateWithDuration(1, animations: {
+                    self.countLabel.alpha = 1
+                    self.restartButton.alpha = 1
+                    self.highscoreButton.alpha = 1
+                    
+                })
+                stopTimerMain()
+            }
+        }
+    }
 
     @IBAction func onMoveGIrl(sender: UIPanGestureRecognizer) {
         let point = sender.locationInView(view)
@@ -166,16 +167,6 @@ class GameViewController: UIViewController {
         if point.x > 24 && point.x < 296 {
             catcherView.center.x = point.x
         }
-        
-        
-        
-        if (catcherView.center.y <= self.fallingMan.center.y + 42) && ((self.fallingMan.center.x + 18 > catcherView.center.x - 24 && self.fallingMan.center.x + 18 < catcherView.center.x + 24) || (self.fallingMan.center.x - 18 < catcherView.center.x + 24 && self.fallingMan.center.x > catcherView.center.x - 24)) {
-            
-            fallingMan.alpha = 0
-            score++
-            
-        }
-        
         
 //        if sender.state == UIGestureRecognizerState.Began {
 //            print("Gesture began")
@@ -191,20 +182,11 @@ class GameViewController: UIViewController {
     }
     
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
         
         leaderboardViewController.score1 = score
         leaderboardViewController.playerName = playerLabel.text
-        
-        
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
     func fallingMen() {
