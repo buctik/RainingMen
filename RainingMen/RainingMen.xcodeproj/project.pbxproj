@@ -15,6 +15,7 @@
 		0F71C5F01D13B26C0075383B /* RainingMenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C5EF1D13B26C0075383B /* RainingMenTests.swift */; };
 		0F71C5FB1D13B26C0075383B /* RainingMenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C5FA1D13B26C0075383B /* RainingMenUITests.swift */; };
 		0F71C6091D13B6BD0075383B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C6081D13B6BD0075383B /* GameViewController.swift */; };
+		0F71C60B1D21CFC00075383B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C60A1D21CFC00075383B /* LoginViewController.swift */; };
 		C96742561D19EC7100049B0D /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96742551D19EC7100049B0D /* LeaderboardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		0F71C5FA1D13B26C0075383B /* RainingMenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainingMenUITests.swift; sourceTree = "<group>"; };
 		0F71C5FC1D13B26C0075383B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F71C6081D13B6BD0075383B /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		0F71C60A1D21CFC00075383B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C96742551D19EC7100049B0D /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				0F71C5DA1D13B26C0075383B /* AppDelegate.swift */,
 				0F71C5DC1D13B26C0075383B /* ViewController.swift */,
 				0F71C5DE1D13B26C0075383B /* Main.storyboard */,
+				0F71C60A1D21CFC00075383B /* LoginViewController.swift */,
 				C96742551D19EC7100049B0D /* LeaderboardViewController.swift */,
 				0F71C6081D13B6BD0075383B /* GameViewController.swift */,
 				0F71C5E11D13B26C0075383B /* Assets.xcassets */,
@@ -265,6 +268,7 @@
 				0F71C5DD1D13B26C0075383B /* ViewController.swift in Sources */,
 				0F71C6091D13B6BD0075383B /* GameViewController.swift in Sources */,
 				C96742561D19EC7100049B0D /* LeaderboardViewController.swift in Sources */,
+				0F71C60B1D21CFC00075383B /* LoginViewController.swift in Sources */,
 				0F71C5DB1D13B26C0075383B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

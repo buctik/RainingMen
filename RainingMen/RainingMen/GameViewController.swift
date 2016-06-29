@@ -22,16 +22,32 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreTitleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
+    @IBOutlet weak var playerLabel: UILabel!
+    
     var count: Int = 0
     var countMain: Int = 0
     
     var score: Int = 0
     
-    var timer: CGFloat!
-    var timerMain: CGFloat!
+    var timer: NSTimer!
+    var timerMain: NSTimer!
+    
+    var player: String!
+    
+    var fallingMan: UIImageView!
+    
+    var menImages: [UIImage] = [
+    
+        UIImage(named: "falling_man")!
+        
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playerLabel.text = player
+        
+        playerLabel.alpha = 0
         catcherView.alpha = 0
         cloudView.alpha = 0
         timerLabel.alpha = 0
@@ -43,17 +59,13 @@ class GameViewController: UIViewController {
         
         startTimer()
         
-        let timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
-
-        let timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+//
+//        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
 
         
         
-        UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
-            self.cloudView.center.x = 289
-            }) { (Bool) in
-                
-        }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -83,6 +95,7 @@ class GameViewController: UIViewController {
                 scoreTitleLabel.alpha = 0
                 scoreLabel.alpha = 0
                 timerLabel.alpha = 0
+                self.playerLabel.alpha = 0
                 UIView.animateWithDuration(1, animations: {
                     self.countLabel.alpha = 1
                     self.restartButton.alpha = 1
@@ -97,20 +110,26 @@ class GameViewController: UIViewController {
     func startTimer() {
         timerLabel.text = "Get Ready"
         count = 4
-//        let timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        
+        
     }
     
     func stopTimer(){
-//        timer.invalidate()
+        timer.invalidate()
     }
     
     func startTimerMain() {
         countMain = 30
-//        let timerMain = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+        
+        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+        
+        
+        
     }
     
     func stopTimerMain(){
-//        timerMain.invalidate()
+        timerMain.invalidate()
     }
     
     func update() {
@@ -121,6 +140,7 @@ class GameViewController: UIViewController {
                 countMain = 30
                 countLabel.text = "Start!"
                 UIView.animateWithDuration(1, animations: {
+                    self.playerLabel.alpha = 1
                     self.countLabel.alpha = 0
                     self.catcherView.alpha = 1
                     self.cloudView.alpha = 1
@@ -130,6 +150,15 @@ class GameViewController: UIViewController {
                 })
                 stopTimer()
                 startTimerMain()
+                
+                fallingMen()
+                
+                UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
+                    self.cloudView.center.x = 289
+                }) { (Bool) in
+                    
+                }
+                
             }
         }
     }
@@ -139,18 +168,26 @@ class GameViewController: UIViewController {
 //        var velocity = sender.velocityInView(view)
 //        var translation = sender.translationInView(view)
         
-        
         if point.x > 24 && point.x < 296 {
             catcherView.center.x = point.x
         }
         
-        if sender.state == UIGestureRecognizerState.Began {
-            print("Gesture began")
-        } else if sender.state == UIGestureRecognizerState.Changed {
-            print("Gesture is changing")
-        } else if sender.state == UIGestureRecognizerState.Ended {
-            print("Gesture ended")
-        }
+        
+        
+//        if (catcherView.center.y <= self.fallingMan.center.y + 42) && (self.fallingMan.center.x - 18 < catcherView.center.x {
+//            
+//            fallingMan.alpha = 0
+//            
+//        }
+        
+        
+//        if sender.state == UIGestureRecognizerState.Began {
+//            print("Gesture began")
+//        } else if sender.state == UIGestureRecognizerState.Changed {
+//            print("Gesture is changing")
+//        } else if sender.state == UIGestureRecognizerState.Ended {
+//            print("Gesture ended")
+//        }
     }
     @IBAction func tappedHighScoresButton(sender: UIButton) {
     
@@ -172,6 +209,29 @@ class GameViewController: UIViewController {
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    func fallingMen() {
+//        print("\(cloudView.center.x)")
+        fallingMan = UIImageView(frame: CGRectMake(cloudView.center.x, cloudView.center.y + 36, 36, 36))
+        fallingMan.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        
+        fallingMan.image = menImages[0]
+        
+        fallingMan.alpha = 1
+        
+        self.view.addSubview(fallingMan)
+        
+        UIView.animateWithDuration(3) {
+            self.fallingMan.center.y = 568
+        }
+        
+//        let cloudCenter = cloudView.center.x
+//        fallingMan.center.x = cloudCenter
+//        fallingMan.center.y = cloudView.center.y + 36
+        
+        
     }
     
 
