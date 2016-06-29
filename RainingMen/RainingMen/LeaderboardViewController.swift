@@ -23,7 +23,11 @@ class LeaderboardViewController: UIViewController {
     @IBOutlet weak var score5Label: UILabel!
     
     
-    var score1: Int = 500
+    var score1: Int!
+    var score2: Int!
+    var score3: Int!
+    var score4: Int!
+    var score5: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
