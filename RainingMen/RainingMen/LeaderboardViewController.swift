@@ -29,11 +29,14 @@ class LeaderboardViewController: UIViewController {
     var score4: Int!
     var score5: Int!
     
+    var playerName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //print("\(score1)")
         score1Label.text = String(score1)
-        
+        leader1Label.text = playerName
         
 
         // Do any additional setup after loading the view.

@@ -27,7 +27,7 @@ class GameViewController: UIViewController {
     var count: Int = 0
     var countMain: Int = 0
     
-    var score: Int = 0
+    var score: Int = 33
     
     var timer: NSTimer!
     var timerMain: NSTimer!
@@ -191,6 +191,8 @@ class GameViewController: UIViewController {
     }
     @IBAction func tappedHighScoresButton(sender: UIButton) {
         performSegueWithIdentifier("highScoresSegue", sender: self)
+        //prepareForSegue(highScoresSegue, sender: self)
+        
     }
     
     
@@ -201,10 +203,11 @@ class GameViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
         
-        leaderboardViewController.view.layoutIfNeeded()
+        //leaderboardViewController.view.layoutIfNeeded()
         
         leaderboardViewController.score1 = score
-    
+        leaderboardViewController.playerName = playerLabel.text
+        
         
         
         // Get the new view controller using segue.destinationViewController.
