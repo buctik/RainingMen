@@ -110,7 +110,7 @@ class GameViewController: UIViewController {
     func startTimer() {
         timerLabel.text = "Get Ready"
         count = 4
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
         
         
     }
@@ -122,7 +122,7 @@ class GameViewController: UIViewController {
     func startTimerMain() {
         countMain = 30
         
-        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+        timerMain = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
         
         
         

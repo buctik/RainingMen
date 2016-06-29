@@ -38,6 +38,10 @@ class LeaderboardViewController: UIViewController {
         score1Label.text = String(score1)
         leader1Label.text = playerName
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(score1, forKey: playerName)
+        //if let defaults.integerForKey(playerName)
+        
 
         // Do any additional setup after loading the view.
     }
