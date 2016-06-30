@@ -35,7 +35,8 @@ class GameViewController: UIViewController {
     
     var player: String!
     
-    var fallingMan: [UIImageView]!
+    var fallingMan: [UIImageView] = []
+    var fallingManView: UIImageView!
     
     var menImages: [UIImage] = [
     
@@ -101,46 +102,50 @@ class GameViewController: UIViewController {
         if(count > 0) {
             count = count - 1
             countLabel.text = String(count)
-            if (count == 0) {
-                countMain = 30
-                countLabel.text = "Start!"
-                UIView.animateWithDuration(1, animations: {
-                    self.playerLabel.alpha = 1
-                    self.countLabel.alpha = 0
-                    self.catcherView.alpha = 1
-                    self.cloudView.alpha = 1
-                    self.timerLabel.alpha = 1
-                    self.scoreTitleLabel.alpha = 1
-                    self.scoreLabel.alpha = 1
-                })
-                stopTimer()
-                startTimerMain()
-                
-                fallingMen(1)
-                
-                UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
-                    self.cloudView.center.x = 289
-                }) { (Bool) in
-                    
-                }
+            
+        }
+        if (count == 0) {
+            countMain = 30
+            countLabel.text = "Start!"
+            UIView.animateWithDuration(1, animations: {
+                self.playerLabel.alpha = 1
+                self.countLabel.alpha = 0
+                self.catcherView.alpha = 1
+                self.cloudView.alpha = 1
+                self.timerLabel.alpha = 1
+                self.scoreTitleLabel.alpha = 1
+                self.scoreLabel.alpha = 1
+            })
+            stopTimer()
+            startTimerMain()
+            
+            //                fallingMen()
+            
+            UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
+                self.cloudView.center.x = 289
+            }) { (Bool) in
                 
             }
+            
         }
     }
     
     func updateMain() {
-//        if countMain % 60 == 0 {
-//            fallingMen()
-//        }
-        if(countMain > 0) {
-            let fallingManLength = fallingMan.count
+        print("\(countMain)")
+        if countMain % 300 == 0 {
+            fallingMen()
+        }
+        countMain = countMain - 1
+        timerLabel.text = String(Int(countMain/10))
+        if countMain > 0 && countMain < 299 {
+            let fallingManLength = fallingMan.count-1
             for n in 0...fallingManLength{
                 let catcherViewLeftEdge = catcherView.frame.origin.x
                 let catcherViewRightEdge = catcherView.frame.origin.x + catcherView.frame.width
                 let catcherViewTopEdge = catcherView.frame.origin.y
                 
                 //            print("\(fallingMan.layer.presentationLayer()!.frame.origin.y,fallingMan.alpha, self.catcherView.frame.origin.y)")
-                
+                print("\(countMain/10,n,fallingMan)")
                 let fallingManLeftEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x
                 let fallingManRightEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x + fallingMan[n].layer.presentationLayer()!.frame.width
                 let fallingManBottomEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.y + fallingMan[n].layer.presentationLayer()!.frame.height
@@ -155,24 +160,24 @@ class GameViewController: UIViewController {
             }
             
             
-            countMain = countMain - 1
-            timerLabel.text = String(Int(countMain/10))
-            if countMain == 0 {
-                countLabel.text = "Game Over"
-                catcherView.alpha = 0
-                cloudView.alpha = 0
-                scoreTitleLabel.alpha = 0
-                scoreLabel.alpha = 0
-                timerLabel.alpha = 0
-                self.playerLabel.alpha = 0
-                UIView.animateWithDuration(1, animations: {
-                    self.countLabel.alpha = 1
-                    self.restartButton.alpha = 1
-                    self.highscoreButton.alpha = 1
-                    
-                })
-                stopTimerMain()
-            }
+            
+            
+        }
+        if countMain == 0 {
+            countLabel.text = "Game Over"
+            catcherView.alpha = 0
+            cloudView.alpha = 0
+            scoreTitleLabel.alpha = 0
+            scoreLabel.alpha = 0
+            timerLabel.alpha = 0
+            self.playerLabel.alpha = 0
+            UIView.animateWithDuration(1, animations: {
+                self.countLabel.alpha = 1
+                self.restartButton.alpha = 1
+                self.highscoreButton.alpha = 1
+                
+            })
+            stopTimerMain()
         }
     }
 
@@ -206,19 +211,18 @@ class GameViewController: UIViewController {
         leaderboardViewController.playerName = playerLabel.text
     }
     
-    func fallingMen(n: Int) {
-        let fallingManView = UIImageView(frame: CGRectMake(cloudView.layer.presentationLayer()!.frame.origin.x, cloudView.center.y + 36, 36, 36))
+    func fallingMen() {
+        fallingManView = UIImageView(frame: CGRectMake(cloudView.layer.presentationLayer()!.frame.origin.x, cloudView.layer.presentationLayer()!.frame.origin.y + 36, 36, 36))
         fallingManView.contentMode = UIViewContentMode.ScaleAspectFill
-        
         
         fallingManView.image = menImages[0]
         
         fallingManView.alpha = 1
         fallingMan.append(fallingManView)
-        self.view.insertSubview(fallingMan[n], belowSubview: catcherView)
+        self.view.insertSubview(fallingManView, belowSubview: catcherView)
         
         UIView.animateWithDuration(3) {
-            self.fallingMan[n].frame.origin.y = 568
+            self.fallingManView.frame.origin.y = 568
         }
         
         
