@@ -19,6 +19,8 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var highscoreButton: UIButton!
+    @IBOutlet weak var changeNameButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     @IBOutlet weak var scoreTitleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -55,6 +57,8 @@ class GameViewController: UIViewController {
         timerLabel.alpha = 0
         restartButton.alpha = 0
         highscoreButton.alpha = 0
+        changeNameButton.alpha = 0
+        settingsButton.alpha = 0
         scoreTitleLabel.alpha = 0
         scoreLabel.alpha = 0
         
@@ -68,9 +72,13 @@ class GameViewController: UIViewController {
     
     
     @IBAction func onRestart(sender: AnyObject) {
-        startTimer()
         restartButton.alpha = 0
         highscoreButton.alpha = 0
+        changeNameButton.alpha = 0
+        settingsButton.alpha = 0
+        score = 0
+        scoreLabel.text = "0"
+        startTimer()
     }
     
     
@@ -132,7 +140,7 @@ class GameViewController: UIViewController {
     
     func updateMain() {
         print("\(countMain)")
-        if countMain % 300 == 0 {
+        if countMain % 30 == 0 {
             fallingMen()
         }
         countMain = countMain - 1
@@ -143,24 +151,24 @@ class GameViewController: UIViewController {
                 let catcherViewLeftEdge = catcherView.frame.origin.x
                 let catcherViewRightEdge = catcherView.frame.origin.x + catcherView.frame.width
                 let catcherViewTopEdge = catcherView.frame.origin.y
+                let catcherViewBottomEdge = catcherView.frame.origin.y + catcherView.frame.height
                 
                 //            print("\(fallingMan.layer.presentationLayer()!.frame.origin.y,fallingMan.alpha, self.catcherView.frame.origin.y)")
                 print("\(countMain/10,n,fallingMan)")
+                if fallingMan[n].layer.presentationLayer() == nil {
+                    continue
+                }
                 let fallingManLeftEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x
                 let fallingManRightEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x + fallingMan[n].layer.presentationLayer()!.frame.width
                 let fallingManBottomEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.y + fallingMan[n].layer.presentationLayer()!.frame.height
                 
-                if (catcherViewTopEdge <= fallingManBottomEdge) && ((fallingManRightEdge > catcherViewLeftEdge && fallingManRightEdge < catcherViewRightEdge) || (fallingManLeftEdge < catcherViewRightEdge && fallingManLeftEdge > catcherViewLeftEdge)) {
+                if (catcherViewTopEdge <= fallingManBottomEdge && catcherViewBottomEdge > fallingManBottomEdge) && ((fallingManRightEdge > catcherViewLeftEdge && fallingManRightEdge < catcherViewRightEdge) || (fallingManLeftEdge < catcherViewRightEdge && fallingManLeftEdge > catcherViewLeftEdge)) {
                     fallingMan[n].alpha = 0
                     fallingMan[n].center.y = 0
                     score += 1
                     scoreLabel.text = String(score)
-                    
                 }
             }
-            
-            
-            
             
         }
         if countMain == 0 {
@@ -175,6 +183,8 @@ class GameViewController: UIViewController {
                 self.countLabel.alpha = 1
                 self.restartButton.alpha = 1
                 self.highscoreButton.alpha = 1
+                self.changeNameButton.alpha = 1
+                self.settingsButton.alpha = 1
                 
             })
             stopTimerMain()
@@ -203,6 +213,9 @@ class GameViewController: UIViewController {
         
     }
     
+    @IBAction func tappedChangedNameButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let leaderboardViewController = segue.destinationViewController as! LeaderboardViewController
