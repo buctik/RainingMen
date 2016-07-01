@@ -145,7 +145,7 @@ class GameViewController: UIViewController {
         }
         countMain = countMain - 1
         timerLabel.text = String(Int(countMain/10))
-        if countMain > 0 && countMain < 299 {
+        if countMain > 0 {
             let fallingManLength = fallingMan.count-1
             for n in 0...fallingManLength{
                 let catcherViewLeftEdge = catcherView.frame.origin.x
@@ -179,6 +179,10 @@ class GameViewController: UIViewController {
             scoreLabel.alpha = 0
             timerLabel.alpha = 0
             self.playerLabel.alpha = 0
+            let fallingManLength = fallingMan.count-1
+            for n in 0...fallingManLength {
+                fallingMan[n].alpha = 0
+            }
             UIView.animateWithDuration(1, animations: {
                 self.countLabel.alpha = 1
                 self.restartButton.alpha = 1

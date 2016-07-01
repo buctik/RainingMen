@@ -26,7 +26,12 @@ class LoginViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let destinationViewController = segue.destinationViewController as! GameViewController
         
-        destinationViewController.player = self.nameField.text
+        if self.nameField.text == "" {
+            destinationViewController.player = "Player 1"
+        }
+        else {
+            destinationViewController.player = self.nameField.text
+        }
         
     }
 
