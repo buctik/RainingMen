@@ -55,6 +55,8 @@ class GameViewController: UIViewController {
     var fallingTime: Int = 2 //in seconds
     var dropInterval: Int = 4 //in seconds
     var levelTimerLength: Int = 30 //in seconds
+    var levelTimerSpeed: Int = 5 //Speed from 1 - 10  with 1 beeing normal speed and 10 being super fast
+    
     
     
     override func viewDidLoad() {
@@ -124,7 +126,7 @@ class GameViewController: UIViewController {
         
         cloudView.startAnimating()
         
-        timerMain = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
+        timerMain = NSTimer.scheduledTimerWithTimeInterval((0.1 / Double(levelTimerSpeed)), target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
     }
     
     func stopTimerMain(){
