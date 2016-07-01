@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
     
+    var backgroundMusicPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playBackgroundMusic()
 
         // Do any additional setup after loading the view.
     }
@@ -26,10 +31,29 @@ class LoginViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let destinationViewController = segue.destinationViewController as! GameViewController
         
+        backgroundMusicPlayer.stop()
         destinationViewController.player = self.nameField.text
         
     }
-
+    
+    
+    func playBackgroundMusic() {
+        do {
+            if let bundle = NSBundle.mainBundle().pathForResource("rainingMenIntro", ofType: "mp3") {
+                let alertSound = NSURL(fileURLWithPath: bundle)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                print("before play")
+                try AVAudioSession.sharedInstance().setActive(true)
+                try backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: alertSound)
+                backgroundMusicPlayer.numberOfLoops = -1
+                backgroundMusicPlayer.prepareToPlay()
+                backgroundMusicPlayer.play()
+                print("after play")
+            }
+        } catch {
+            print(error)
+        }
+    }
     /*
     // MARK: - Navigation
 

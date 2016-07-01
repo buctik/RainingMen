@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import AVFoundation
 
 class GameViewController: UIViewController {
 
@@ -26,6 +27,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var playerLabel: UILabel!
+    
+    var backgroundMusicPlayer: AVAudioPlayer!
+    
     
     var count: Int = 0
     var countMain: Int = 0
@@ -62,6 +66,7 @@ class GameViewController: UIViewController {
         scoreTitleLabel.alpha = 0
         scoreLabel.alpha = 0
         
+        playBackgroundMusic()
         startTimer()
     }
 
@@ -87,6 +92,7 @@ class GameViewController: UIViewController {
     func startTimer() {
         timerLabel.text = "Get Ready"
         count = 4
+        backgroundMusicPlayer.play()
         timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
         
         
@@ -94,6 +100,7 @@ class GameViewController: UIViewController {
     
     func stopTimer(){
         timer.invalidate()
+    
     }
     
     func startTimerMain() {
@@ -104,6 +111,8 @@ class GameViewController: UIViewController {
     
     func stopTimerMain(){
         timerMain.invalidate()
+        backgroundMusicPlayer.stop()
+        backgroundMusicPlayer.currentTime = 0
     }
     
     func update() {
@@ -239,6 +248,23 @@ class GameViewController: UIViewController {
         }
         
         
+    }
+    
+    func playBackgroundMusic() {
+        do {
+            if let bundle = NSBundle.mainBundle().pathForResource("rainingMenMain", ofType: "mp3") {
+                let alertSound = NSURL(fileURLWithPath: bundle)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setActive(true)
+                try backgroundMusicPlayer = AVAudioPlayer(contentsOfURL: alertSound)
+                backgroundMusicPlayer.numberOfLoops = -1
+                backgroundMusicPlayer.prepareToPlay()
+                //backgroundMusicPlayer.play()
+                
+            }
+        } catch {
+            print(error)
+        }
     }
     
 
