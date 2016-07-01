@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var scoreTitleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var minusOneLabel: UILabel!
     
     @IBOutlet weak var playerLabel: UILabel!
     
@@ -32,7 +33,7 @@ class GameViewController: UIViewController {
     
     
     var count: Int = 0
-    var countMain: Int = 0
+    var countMain: Int!
     
     var score: Int = 0
     
@@ -50,6 +51,12 @@ class GameViewController: UIViewController {
         
     ]
     
+    //Game Mechanics
+    var fallingTime: Int = 2 //in seconds
+    var dropInterval: Int = 4 //in seconds
+    var levelTimerLength: Int = 30 //in seconds
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +72,7 @@ class GameViewController: UIViewController {
         settingsButton.alpha = 0
         scoreTitleLabel.alpha = 0
         scoreLabel.alpha = 0
+        minusOneLabel.alpha = 0
         
         playBackgroundMusic()
         startTimer()
@@ -82,7 +90,7 @@ class GameViewController: UIViewController {
         changeNameButton.alpha = 0
         settingsButton.alpha = 0
         score = 0
-        scoreLabel.text = "0"
+        scoreLabel.text = String(score)
         startTimer()
     }
     
@@ -91,6 +99,7 @@ class GameViewController: UIViewController {
     
     func startTimer() {
         timerLabel.text = "Get Ready"
+        print("score at begin timer: \(score)")
         count = 4
         backgroundMusicPlayer.play()
         timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(GameViewController.update), userInfo: nil, repeats: true)
@@ -104,12 +113,23 @@ class GameViewController: UIViewController {
     }
     
     func startTimerMain() {
-        countMain = 300
+        print("score at begin mainTimer: \(score)")
+        countMain = levelTimerLength * 10
+        cloudView.center.x = 31
+        UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
+            self.cloudView.center.x = 289
+        }) { (Bool) in
+            
+        }
+        
+        cloudView.startAnimating()
         
         timerMain = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(GameViewController.updateMain), userInfo: nil, repeats: true)
     }
     
     func stopTimerMain(){
+        fallingMan = []
+        cloudView.stopAnimating()
         timerMain.invalidate()
         backgroundMusicPlayer.stop()
         backgroundMusicPlayer.currentTime = 0
@@ -122,9 +142,8 @@ class GameViewController: UIViewController {
             
         }
         if (count == 0) {
-            countMain = 30
             countLabel.text = "Start!"
-            UIView.animateWithDuration(1, animations: {
+            UIView.animateWithDuration(0.5, animations: {
                 self.playerLabel.alpha = 1
                 self.countLabel.alpha = 0
                 self.catcherView.alpha = 1
@@ -136,49 +155,64 @@ class GameViewController: UIViewController {
             stopTimer()
             startTimerMain()
             
-            //                fallingMen()
             
-            UIView.animateWithDuration(2, delay: 0, options: [UIViewAnimationOptions.Repeat, UIViewAnimationOptions.Autoreverse], animations: {
-                self.cloudView.center.x = 289
-            }) { (Bool) in
-                
-            }
+            
             
         }
     }
     
     func updateMain() {
-        print("\(countMain)")
-        if countMain % 30 == 0 {
+//        print("\(countMain)")
+        if countMain % (dropInterval * 10) == 0 {
             fallingMen()
         }
         countMain = countMain - 1
         timerLabel.text = String(Int(countMain/10))
         if countMain > 0 {
-            let fallingManLength = fallingMan.count-1
-            for n in 0...fallingManLength{
-                let catcherViewLeftEdge = catcherView.frame.origin.x
-                let catcherViewRightEdge = catcherView.frame.origin.x + catcherView.frame.width
-                let catcherViewTopEdge = catcherView.frame.origin.y
-                let catcherViewBottomEdge = catcherView.frame.origin.y + catcherView.frame.height
-                
-                //            print("\(fallingMan.layer.presentationLayer()!.frame.origin.y,fallingMan.alpha, self.catcherView.frame.origin.y)")
-                print("\(countMain/10,n,fallingMan)")
-                if fallingMan[n].layer.presentationLayer() == nil {
-                    continue
-                }
-                let fallingManLeftEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x
-                let fallingManRightEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x + fallingMan[n].layer.presentationLayer()!.frame.width
-                let fallingManBottomEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.y + fallingMan[n].layer.presentationLayer()!.frame.height
-                
-                if (catcherViewTopEdge <= fallingManBottomEdge && catcherViewBottomEdge > fallingManBottomEdge) && ((fallingManRightEdge > catcherViewLeftEdge && fallingManRightEdge < catcherViewRightEdge) || (fallingManLeftEdge < catcherViewRightEdge && fallingManLeftEdge > catcherViewLeftEdge)) {
-                    fallingMan[n].alpha = 0
-                    fallingMan[n].center.y = 0
-                    score += 1
-                    scoreLabel.text = String(score)
+            if fallingMan.count > 0 {
+                let fallingManLength = fallingMan.count-1
+                for n in 0...fallingManLength{
+                    let catcherViewLeftEdge = catcherView.frame.origin.x
+                    let catcherViewRightEdge = catcherView.frame.origin.x + catcherView.frame.width
+                    let catcherViewTopEdge = catcherView.frame.origin.y
+                    let catcherViewBottomEdge = catcherView.frame.origin.y + catcherView.frame.height
+                    
+                    //                print("\(countMain/10,n,fallingMan)")
+                    if fallingMan[n].layer.presentationLayer() == nil {
+                        continue
+                    }
+                    let fallingManLeftEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x
+                    let fallingManRightEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.x + fallingMan[n].layer.presentationLayer()!.frame.width
+                    let fallingManTopEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.y
+                    let fallingManBottomEdge = fallingMan[n].layer.presentationLayer()!.frame.origin.y + fallingMan[n].layer.presentationLayer()!.frame.height
+                    
+                    if (catcherViewTopEdge <= fallingManBottomEdge && catcherViewBottomEdge > fallingManBottomEdge) && ((fallingManRightEdge > catcherViewLeftEdge && fallingManRightEdge < catcherViewRightEdge) || (fallingManLeftEdge < catcherViewRightEdge && fallingManLeftEdge > catcherViewLeftEdge)) {
+                        fallingMan[n].alpha = 0
+                        fallingMan[n].center.y = 0
+                        score += 1
+                        print("score after +1: \(score)")
+                        scoreLabel.text = String(score)
+                    }
+                    
+                    if catcherViewBottomEdge < fallingManTopEdge {
+                        fallingMan[n].alpha = 0
+                        fallingMan[n].center.y = 0
+                        score -= 1
+                        print("score after -1: \(score)")
+                        scoreLabel.text = String(score)
+                        self.minusOneLabel.alpha = 1
+                        
+                        UIView.animateWithDuration(0.2, animations: {
+                            self.minusOneLabel.transform = CGAffineTransformMakeScale(4, 4)
+                            self.minusOneLabel.alpha = 0
+                            }, completion: { (Bool) in
+                                self.minusOneLabel.transform = CGAffineTransformMakeScale(1, 1)
+                        })
+                        
+                        
+                    }
                 }
             }
-            
         }
         if countMain == 0 {
             countLabel.text = "Game Over"
@@ -186,10 +220,12 @@ class GameViewController: UIViewController {
             cloudView.alpha = 0
             scoreTitleLabel.alpha = 0
             scoreLabel.alpha = 0
+            minusOneLabel.alpha = 0
             timerLabel.alpha = 0
             self.playerLabel.alpha = 0
             let fallingManLength = fallingMan.count-1
             for n in 0...fallingManLength {
+                fallingMan[n].layer.removeAllAnimations()
                 fallingMan[n].alpha = 0
             }
             UIView.animateWithDuration(1, animations: {

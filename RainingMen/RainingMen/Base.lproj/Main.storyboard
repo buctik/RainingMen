@@ -138,6 +138,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="09H-kV-ztk">
+                                <rect key="frame" x="152" y="221" width="16" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -147,6 +154,7 @@
                         <outlet property="cloudView" destination="mYg-mz-Jfb" id="IGy-Oe-Php"/>
                         <outlet property="countLabel" destination="3fa-eq-Kua" id="420-fi-EBF"/>
                         <outlet property="highscoreButton" destination="EMW-ax-W7V" id="KIM-NZ-fQs"/>
+                        <outlet property="minusOneLabel" destination="09H-kV-ztk" id="fi0-PC-sv6"/>
                         <outlet property="playerLabel" destination="MQ3-Nk-Dx7" id="ni4-yz-hPM"/>
                         <outlet property="restartButton" destination="12z-J0-MQt" id="VCp-Dp-Qxh"/>
                         <outlet property="scoreLabel" destination="b3I-MK-CcF" id="ZLN-qB-n3d"/>
