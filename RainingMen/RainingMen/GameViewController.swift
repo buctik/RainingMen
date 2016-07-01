@@ -216,7 +216,7 @@ class GameViewController: UIViewController {
                         score -= 1
                         scoreLabel.text = String(score)
                         self.minusOneLabel.alpha = 1
-                        
+                        self.minusOneLabel.frame.origin.x = fallingMan[n].frame.origin.x
                         UIView.animateWithDuration(0.3, animations: {
                             self.minusOneLabel.transform = CGAffineTransformMakeScale(4, 4)
                             self.minusOneLabel.alpha = 0
@@ -268,7 +268,7 @@ class GameViewController: UIViewController {
         fallingManView = UIImageView(frame: CGRectMake(cloudView.layer.presentationLayer()!.frame.origin.x, cloudView.layer.presentationLayer()!.frame.origin.y + 36, 36, 36))
         fallingManView.contentMode = UIViewContentMode.ScaleAspectFill
         
-        fallingManView.image = menImages[0]
+        fallingManView.image = menImages[Int(arc4random_uniform(UInt32(self.menImages.count)))]
         
         fallingManView.alpha = 1
         fallingMan.append(fallingManView)
