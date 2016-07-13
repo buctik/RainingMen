@@ -214,6 +214,7 @@ class GameViewController: UIViewController {
                         fallingMan[n].alpha = 0
                         fallingMan[n].center.y = 0
                         score -= 1
+                        if score < 0 { score = 0 }
                         scoreLabel.text = String(score)
                         self.minusOneLabel.alpha = 1
                         self.minusOneLabel.frame.origin.x = fallingMan[n].frame.origin.x
