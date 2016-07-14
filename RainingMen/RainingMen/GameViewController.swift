@@ -169,7 +169,7 @@ class GameViewController: UIViewController {
             self.restartButton.alpha = 1
             self.highscoreButton.alpha = 1
             self.changeNameButton.alpha = 1
-            self.settingsButton.alpha = 1
+//            self.settingsButton.alpha = 1 ------ Show Settings Button ---------
         })
         fallingMan = []
         cloudView.stopAnimating()
