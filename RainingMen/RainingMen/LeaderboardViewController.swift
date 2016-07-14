@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LeaderboardViewController: UIViewController {
 
@@ -22,6 +23,9 @@ class LeaderboardViewController: UIViewController {
     @IBOutlet weak var score4Label: UILabel!
     @IBOutlet weak var score5Label: UILabel!
     
+    var leaderArray = [UILabel]()
+    var scoreArray = [UILabel]()
+    
     
     var score1: Int!
     var score2: Int!
@@ -29,14 +33,67 @@ class LeaderboardViewController: UIViewController {
     var score4: Int!
     var score5: Int!
     
+    var items = [NSDictionary]()
+    
     var playerName: String!
+    
+    var ref = FIRDatabase.database().referenceFromURL("https://rainingmen-881fc.firebaseio.com")
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        leaderArray.append(leader1Label)
+        leaderArray.append(leader2Label)
+        leaderArray.append(leader3Label)
+        leaderArray.append(leader4Label)
+        leaderArray.append(leader5Label)
+        
+        scoreArray.append(score1Label)
+        scoreArray.append(score2Label)
+        scoreArray.append(score3Label)
+        scoreArray.append(score4Label)
+        scoreArray.append(score5Label)
+        
+        let orderValueRef = ref.queryOrderedByValue().queryLimitedToLast(5)
+        orderValueRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            var i = 4
+            //code
+            for n in snapshot.children {
+                
+                let snap = n as! FIRDataSnapshot
+                self.items.append([snap.key:snap.value!])
+                
+            }
+            
+//            print("\(self.items)")
+            
+            
+            for item in self.items.prefix(5) {
+                
+                print("\(item)")
+                for (key, value) in item {
+                    self.leaderArray[i].text = key as? String
+                    self.scoreArray[i].text = String(value as! Int)
+                }
+                i = i - 1
+                
+                
+            }
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //print("\(score1)")
-        score1Label.text = String(score1)
-        leader1Label.text = playerName
+        
         
         let defaults = NSUserDefaults.standardUserDefaults()
             defaults.setObject(score1, forKey: playerName)

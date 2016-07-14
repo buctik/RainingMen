@@ -16,9 +16,13 @@
 		0F71C5FB1D13B26C0075383B /* RainingMenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C5FA1D13B26C0075383B /* RainingMenUITests.swift */; };
 		0F71C6091D13B6BD0075383B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C6081D13B6BD0075383B /* GameViewController.swift */; };
 		0F71C60B1D21CFC00075383B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F71C60A1D21CFC00075383B /* LoginViewController.swift */; };
+		0F907DFC1D372C87000CEF34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F907DFB1D372C87000CEF34 /* GoogleService-Info.plist */; };
+		4809D15022E12C879F911D14 /* Pods_RainingMen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B1911FD600176D5710F7B1 /* Pods_RainingMen.framework */; };
+		78A9DD23E947B9650D3A8C67 /* Pods_RainingMenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8100A1FF8E5E07D2B5F32C /* Pods_RainingMenUITests.framework */; };
 		C96742561D19EC7100049B0D /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96742551D19EC7100049B0D /* LeaderboardViewController.swift */; };
 		C96742591D25F21900049B0D /* rainingMenIntro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C96742571D25F21900049B0D /* rainingMenIntro.mp3 */; };
 		C967425A1D25F21900049B0D /* rainingMenMain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C96742581D25F21900049B0D /* rainingMenMain.mp3 */; };
+		E47A09ADFA2393D1A2D513A4 /* Pods_RainingMenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB6B3684A3867E02CFE90E /* Pods_RainingMenTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02B1911FD600176D5710F7B1 /* Pods_RainingMen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RainingMen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F71C5D71D13B26C0075383B /* RainingMen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainingMen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F71C5DA1D13B26C0075383B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F71C5DC1D13B26C0075383B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,9 +59,18 @@
 		0F71C5FC1D13B26C0075383B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F71C6081D13B6BD0075383B /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		0F71C60A1D21CFC00075383B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0F907DFB1D372C87000CEF34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B830487ADDBAF5C06D3A986 /* Pods-RainingMenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMenTests/Pods-RainingMenTests.release.xcconfig"; sourceTree = "<group>"; };
+		5C8100A1FF8E5E07D2B5F32C /* Pods_RainingMenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RainingMenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D74C6ED3D01B64CA713F52D /* Pods-RainingMen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMen/Pods-RainingMen.debug.xcconfig"; sourceTree = "<group>"; };
+		91A900DE249F6FB47D4EE15C /* Pods-RainingMenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMenTests/Pods-RainingMenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A64D8C718D683C1DDF12C1A1 /* Pods-RainingMenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMenUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMenUITests/Pods-RainingMenUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B7FB6B3684A3867E02CFE90E /* Pods_RainingMenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RainingMenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96742551D19EC7100049B0D /* LeaderboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		C96742571D25F21900049B0D /* rainingMenIntro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainingMenIntro.mp3; sourceTree = "<group>"; };
 		C96742581D25F21900049B0D /* rainingMenMain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainingMenMain.mp3; sourceTree = "<group>"; };
+		DF16E5BA11610EEC361D5269 /* Pods-RainingMenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMenUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMenUITests/Pods-RainingMenUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E2D1E6B4A61D99D45963FD7A /* Pods-RainingMen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainingMen.release.xcconfig"; path = "Pods/Target Support Files/Pods-RainingMen/Pods-RainingMen.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4809D15022E12C879F911D14 /* Pods_RainingMen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47A09ADFA2393D1A2D513A4 /* Pods_RainingMenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A9DD23E947B9650D3A8C67 /* Pods_RainingMenUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +108,8 @@
 				0F71C5EE1D13B26C0075383B /* RainingMenTests */,
 				0F71C5F91D13B26C0075383B /* RainingMenUITests */,
 				0F71C5D81D13B26C0075383B /* Products */,
+				9BE84D3356944552014CFEF4 /* Pods */,
+				E03364F0C4EE1A389524B63E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				0F71C5DA1D13B26C0075383B /* AppDelegate.swift */,
+				0F907DFB1D372C87000CEF34 /* GoogleService-Info.plist */,
 				0F71C5DC1D13B26C0075383B /* ViewController.swift */,
 				0F71C5DE1D13B26C0075383B /* Main.storyboard */,
 				0F71C60A1D21CFC00075383B /* LoginViewController.swift */,
@@ -140,6 +160,29 @@
 			path = RainingMenUITests;
 			sourceTree = "<group>";
 		};
+		9BE84D3356944552014CFEF4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D74C6ED3D01B64CA713F52D /* Pods-RainingMen.debug.xcconfig */,
+				E2D1E6B4A61D99D45963FD7A /* Pods-RainingMen.release.xcconfig */,
+				91A900DE249F6FB47D4EE15C /* Pods-RainingMenTests.debug.xcconfig */,
+				4B830487ADDBAF5C06D3A986 /* Pods-RainingMenTests.release.xcconfig */,
+				DF16E5BA11610EEC361D5269 /* Pods-RainingMenUITests.debug.xcconfig */,
+				A64D8C718D683C1DDF12C1A1 /* Pods-RainingMenUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E03364F0C4EE1A389524B63E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02B1911FD600176D5710F7B1 /* Pods_RainingMen.framework */,
+				B7FB6B3684A3867E02CFE90E /* Pods_RainingMenTests.framework */,
+				5C8100A1FF8E5E07D2B5F32C /* Pods_RainingMenUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +190,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F71C5FF1D13B26C0075383B /* Build configuration list for PBXNativeTarget "RainingMen" */;
 			buildPhases = (
+				D521C86DA2FC7CA6DC60A074 /* [CP] Check Pods Manifest.lock */,
 				0F71C5D31D13B26C0075383B /* Sources */,
 				0F71C5D41D13B26C0075383B /* Frameworks */,
 				0F71C5D51D13B26C0075383B /* Resources */,
+				47C4423E010AFE3A382BB09A /* [CP] Embed Pods Frameworks */,
+				6E7A3F743344619213B5509F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +210,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F71C6021D13B26C0075383B /* Build configuration list for PBXNativeTarget "RainingMenTests" */;
 			buildPhases = (
+				1CFA992FC799D0A8FB7A60B1 /* [CP] Check Pods Manifest.lock */,
 				0F71C5E71D13B26C0075383B /* Sources */,
 				0F71C5E81D13B26C0075383B /* Frameworks */,
 				0F71C5E91D13B26C0075383B /* Resources */,
+				6353FA6254EB73CF1F8A99BA /* [CP] Embed Pods Frameworks */,
+				F60AF5C610DEDE2EB8BC4774 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +231,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F71C6051D13B26C0075383B /* Build configuration list for PBXNativeTarget "RainingMenUITests" */;
 			buildPhases = (
+				DC8CC03D80FCF9DA7CE1EE3B /* [CP] Check Pods Manifest.lock */,
 				0F71C5F21D13B26C0075383B /* Sources */,
 				0F71C5F31D13B26C0075383B /* Frameworks */,
 				0F71C5F41D13B26C0075383B /* Resources */,
+				2562202F224B069B00715A97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,6 +300,7 @@
 				0F71C5E21D13B26C0075383B /* Assets.xcassets in Resources */,
 				0F71C5E01D13B26C0075383B /* Main.storyboard in Resources */,
 				C967425A1D25F21900049B0D /* rainingMenMain.mp3 in Resources */,
+				0F907DFC1D372C87000CEF34 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +319,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1CFA992FC799D0A8FB7A60B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2562202F224B069B00715A97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainingMenUITests/Pods-RainingMenUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47C4423E010AFE3A382BB09A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainingMen/Pods-RainingMen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6353FA6254EB73CF1F8A99BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainingMenTests/Pods-RainingMenTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E7A3F743344619213B5509F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainingMen/Pods-RainingMen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D521C86DA2FC7CA6DC60A074 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DC8CC03D80FCF9DA7CE1EE3B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F60AF5C610DEDE2EB8BC4774 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RainingMenTests/Pods-RainingMenTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F71C5D31D13B26C0075383B /* Sources */ = {
@@ -417,6 +592,7 @@
 		};
 		0F71C6001D13B26C0075383B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D74C6ED3D01B64CA713F52D /* Pods-RainingMen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RainingMen/Info.plist;
@@ -428,6 +604,7 @@
 		};
 		0F71C6011D13B26C0075383B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2D1E6B4A61D99D45963FD7A /* Pods-RainingMen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RainingMen/Info.plist;
@@ -439,6 +616,7 @@
 		};
 		0F71C6031D13B26C0075383B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91A900DE249F6FB47D4EE15C /* Pods-RainingMenTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RainingMenTests/Info.plist;
@@ -451,6 +629,7 @@
 		};
 		0F71C6041D13B26C0075383B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B830487ADDBAF5C06D3A986 /* Pods-RainingMenTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RainingMenTests/Info.plist;
@@ -463,6 +642,7 @@
 		};
 		0F71C6061D13B26C0075383B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF16E5BA11610EEC361D5269 /* Pods-RainingMenUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RainingMenUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -474,6 +654,7 @@
 		};
 		0F71C6071D13B26C0075383B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A64D8C718D683C1DDF12C1A1 /* Pods-RainingMenUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = RainingMenUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

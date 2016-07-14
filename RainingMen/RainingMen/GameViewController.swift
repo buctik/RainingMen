@@ -9,6 +9,7 @@
 import UIKit
 import QuartzCore
 import AVFoundation
+import Firebase
 
 class GameViewController: UIViewController {
 
@@ -47,21 +48,37 @@ class GameViewController: UIViewController {
     
     var menImages: [UIImage] = [
     
-        UIImage(named: "falling_man")!
+        UIImage(named: "george-clooney")!,
+        UIImage(named: "discoo")!,
+        UIImage(named: "download")!,
+        UIImage(named: "hippie man")!,
+        UIImage(named: "hippie-dude-costume")!,
+        UIImage(named: "jokerfinal3")!,
+        UIImage(named: "man")!,
+        UIImage(named: "man2")!,
+        UIImage(named: "punk man2")!,
+        UIImage(named: "mush man")!,
+        UIImage(named: "pun")!,
+        UIImage(named: "rikishi")!,
+        UIImage(named: "ronaldo")!,
+        UIImage(named: "sumo")!,
+        UIImage(named: "zayn")!
         
     ]
+    var ref = FIRDatabase.database().referenceFromURL("https://rainingmen-881fc.firebaseio.com")
     
-    //Game Mechanics
-    var timeToFall: NSTimeInterval = 2 //in seconds
-    var cloudSpeedOneWay: NSTimeInterval = 1 //in seconds
-    var dropInterval: Int = 2 //in seconds
-    var levelTimerLength: Int = 30 //in seconds
-    var levelTimerSpeed: Int = 5 //Speed from 1 - 10  with 1 beeing normal speed and 10 being super fast
+    //Game Mechanics (keep timetofall bigger than drop interval)
+    var timeToFall: NSTimeInterval = 0.8 //in seconds
+    var cloudSpeedOneWay: NSTimeInterval = 0.9 //in seconds
+    var dropInterval: Int = 1 //in seconds
+    var levelTimerLength: Int = 15 //in seconds
+    var levelTimerSpeed: Int = 1 //Speed from 1 - 10  with 1 beeing normal speed and 10 being super fast
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         playerLabel.text = player
         
@@ -159,6 +176,8 @@ class GameViewController: UIViewController {
         timerMain.invalidate()
         backgroundMusicPlayer.stop()
         backgroundMusicPlayer.currentTime = 0
+        ref.updateChildValues([NSString(string: self.playerLabel.text!):NSInteger(Int(self.scoreLabel.text!)!)])
+        
     }
     
     func update() {
@@ -184,7 +203,7 @@ class GameViewController: UIViewController {
         let fallingManLength = fallingMan.count-1
         if countMain >= 0 {
             countMain = countMain - 1
-            if  fallingMan[fallingManLength].alpha == 0 {
+            if  fallingMan[fallingManLength].alpha == 0 && countMain == 0 {
                 stopTimerMain()
             }
             if fallingMan.count > 0 {
